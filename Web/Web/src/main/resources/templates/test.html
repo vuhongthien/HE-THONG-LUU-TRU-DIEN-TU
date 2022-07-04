@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+    <link rel="stylesheet" th:href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link th:href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{../css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div th:fragment="header" class="col-md-12 border-bottom">
+            <div class="row mt-2 mb-2 d-flex justify-content-center mb-3">
+                <div class="col-md-2 d-flex justify-content-center">
+                    <img src="/image/logo.png">
+                    <a href="#" class="logoname">HỆ THỐNG LƯU TRỮ ĐIỆN TỬ</a>
+                </div>
+                <div class="col-md-7 d-flex align-items-center mt-3 ms-3 me-3 ">
+                    <div class="input-group d-flex justify-content-end d-flex align-items-center">
+                        <input type="search" placeholder="Tìm kiếm thư mục hoặc tập tin"
+                               class="form-control rounded-pill p-2 ps-3">
+                        <div class="input-group-addon me-3">
+                            <i class="fa fa-search fs-5 "></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-evenly col-md-2 d-flex align-items-center mt-3 ms-3   ">
+                    <a href="#"><img class="ms-2" src="/image/vn.png"></a>
+                    <a href="#"><img class="ms-2" src="/image/us.png"></a>
+                    <a href="#"><img class="ms-2" src="/image/profile.png"></a>
+                    <div class=" dropdown ">
+                        <a class=" border-0 dropdown-toggle" href="#" role="button" id="dropdownMenuLinkk" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tài khoản
+                        </a>
+                        <ul class=" dropdown-menu" aria-labelledby="dropdownMenuLinkk">
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa-duotone fa-folder-arrow-up"></i> Tải thư mục lên</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fas fa-file-alt text-primary"></i> Google tài liệu</a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fas fa-table text-warning"></i> Google trang tính</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:fragment="header2" class="col-md-12 d-flex bd-highlight ">
+            <b><label class="p-2 ps-0 w-100 bd-highlight">Thông tin menu</label></b>
+            <img class="ms-auto p-2 flex-shrink-1 bd-highlight" src="/image/help.png">
+        </div>
+        <div th:fragment="menu" class="col-md-3 row p-0 d-flex flex-column bd-highlight mb-3   ">
+            <div class=" bd-highlight row mt-2">
+                <a href="#"  class="col-md-12 p-2 ps-4  rounded-start rounded-pill">
+                    <img src="/image/fc.png">
+                Quản lý và tự động hoá quy trình
+                </a>
+            </div>
+            <div class=" bd-highlight row  ">
+                <a href="#"  class="col-md-12 p-2 ps-4  rounded-start rounded-pill">
+                        <img src="/image/as.png">
+                        Giao việc tự động
+                    </a>
+            </div>
+            <div class=" bd-highlight row  ">
+                <a href="#"  class="col-md-12 p-2 ps-4 rounded-start rounded-pill">
+                    <img src="/image/folder.png">
+                    Tài liệu tôi được chia sẻ
+                </a>
+            </div>
+            <div class=" bd-highlight row  ">
+                <a href="#"  class="col-md-12 p-2 ps-4 rounded-start rounded-pill">
+                    <img src="/image/share.png">
+                    Tài liệu tôi đã chia sẻ
+                </a>
+            </div>
+            <div class=" bd-highlight row  ">
+                <a href="#"  class="col-md-12 p-2 ps-4 rounded-start rounded-pill">
+                    <img src="/image/star.png">
+                    Tài liệu có gắn dấu sao
+                </a>
+            </div>
+            <div class=" bd-highlight row ">
+                <a href="#"  class="col-md-12 p-2 ps-4 rounded-start rounded-pill">
+                    <img src="/image/sf.png">
+                    Kiểm tra tính toàn vẹn
+                </a>
+            </div>
+        </div>
+        <div  class="col-md-9">
+            <div class=" container-fluid row p-0 pt-2 mb-3 me-2 mx-auto border-top">
+                Được đề xuất
+            </div>
+            <div class="row row-cols-5 mx-auto d-flex flex-row bd-highlight mb-3  " >
+                <div th:each="i: ${FL}" class="pe-3 p-0 bd-highlight" style="max-width: 250px;">
+                    <div class="col-md-12 border rounded">
+                        <a  th:href="${i.url}">
+                        <img height="120px" width="100%" src="https://lh3.google.com/u/0/d/1OXBSujCDM7vgfZ4NVUs_57fbLtFns-MPVlYzb70VtCA=w200-h190-p-k-nu-iv1"
+                             class="col-md-12 " >
+                        <hr  width="100%" align="center" />
+                        <div class="col-md-11 ms-3 pb-1 text-truncate" style="max-width: 250px;"><i class="fas fa-file-pdf text-danger"></i>
+                                [(${i.name})]
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <table style="width:100%"  class="table table-hover  rounded-bottom">
+                <thead class="table-light">
+                <tr >
+                    <th style="width:5%"  scope="col">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+                    </th>
+                    <th style="width:20%"  class=" mx-auto" scope="col">Tên</th>
+                    <th style="width:40%" scope="col">Thời gian tạo</th>
+                    <th style="width:20%" scope="col">Kích thước</th>
+                    <th style="width:15%" scope="col">Hành động</th>
+                </tr>
+                </thead>
+                <tbody th:each="i: ${FL}">
+                <tr>
+                    <td scope="row">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                    </td>
+
+                        <td class="text-truncate"  >
+                            <a th:href="${i.url}">
+                                <img src="/image/folder23.png"> [(${i.name})]
+                            </a>
+                        </td>
+
+                    <td>#######</td>
+                    <td>###MB</td>
+                    <td>
+                        <img src="image/resize.png">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+
+<div th:fragment="menu" xmlns:th="http://www.w3.org/1999/xhtml" class="p-0 d-flex align-items-start">
+  <!-- Nav pills -->
+  <ul class="flex-column nav nav-pills col-md-3" style="width:21%" aria-orientation="vertical">
+    <li class="nav-item">
+      <a class="rounded-start rounded-pill nav-link me-2 " data-toggle="tab" data-bs-toggle="pill" href="#body1">
+        <img src="/image/fc.png">
+        Quản lý và tự động hoá quy trình
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="rounded-start rounded-pill nav-link me-2 " data-bs-toggle="pill" data-toggle="tab"  data-bs-target="#menu1" href="#menu">
+        <img src="/image/as.png">
+        Giao việc tự động
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="rounded-start rounded-pill nav-link me-2 " data-bs-toggle="pill" href="#body3">
+        <img src="/image/folder.png">
+        Tài liệu tôi được chia sẻ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="rounded-start rounded-pill nav-link me-2 " data-bs-toggle="pill" href="#body4">
+        <img src="/image/share.png">
+        Tài liệu tôi đã chia sẻ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="rounded-start rounded-pill nav-link me-2 " data-bs-toggle="pill"  href="/">
+        <img src="/image/star.png">
+        Tài liệu có gắn dấu sao
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="rounded-start rounded-pill nav-link me-2 " id="ktttv"  data-bs-toggle="pill" href="menu1">
+        <img src="/image/sf.png">
+        Kiểm tra tính toàn vẹn
+      </a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="col-md-9 p-0  tab-content">
+    <div class="col-md-12 p-0 tab-pane container active" id="body0">
+      <th:block th:insert="~{content/bodyindex :: content}"></th:block>
+    </div>
+    <div class="col-md-12 p-0 tab-pane container fade" id="body1">
+      <th:block th:insert="~{content/bodyindex :: content}"></th:block>
+    </div>
+    <div class="col-md-12 p-0 tab-pane container fade" id="menu1">
+      <th:block th:insert="~{content/bodyindex :: tablelistfile}"></th:block>
+    </div>
+    <div class="col-md-12 p-0 tab-pane container fade" id="body3"></div>
+    <div class="col-md-12 p-0 tab-pane container fade" id="body4"></div>
+    <div class="col-md-12 p-0 tab-pane container fade" id="body5"></div>
+    <div class="col-md-12 p-0 tab-pane container fade" id="body6"></div>
+  </div>
+</div>

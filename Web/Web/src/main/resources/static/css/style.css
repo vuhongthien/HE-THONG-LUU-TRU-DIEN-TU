@@ -1,0 +1,126 @@
+body{
+color: #5F6368 !important;
+}
+table th,td{
+color: #5F6368 !important;
+}
+a {
+    color: #5F6368 !important;
+    text-decoration: none;
+}
+.logoname {
+    position: absolute;
+    top: 62px;
+    font-family: system-ui;
+    font-weight: 700;
+    line-height: 19px;
+    text-align: center;
+    color: #4B4B4D;
+    font-size: 15px;
+}
+.input-group-addon.me-3 {
+    position: absolute;
+}
+input.form-control.rounded-pill.p-2.ps-3 {
+
+    background: white;
+    outline: 1px !important;
+    border: 1px;
+    box-shadow: aliceblue;
+    font-size: 13px;
+    box-shadow: inset 0 0 1px 0px #464646;
+}
+hr {
+        margin-top: 0px;
+        margin-bottom: 4px;
+}
+.row.row-cols-5.mx-auto.d-flex.flex-row.bd-highlight.mb-3,  a#dropdownMenuLinkk {
+    font-size: 14px;
+}
+.col-md-12.p-2.ps-4.rounded-start.rounded-pill {
+    font-size: 13px;
+    background: transparent;
+    border: none;
+    /* font-style: unset; */
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 15px;
+    /* font-family: Arial; */
+    color: #5F6368 !important;
+}
+li.nav-item {
+    font-size: 13px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 15px;
+    color: #5F6368 !important;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #6eb43f;
+}
+.col-md-12.p-2.ps-4.rounded-start.rounded-pill:hover {
+    background: #6EB43F;
+        color: #fff !important;
+
+}
+
+.container-fluid.row.p-0.pt-2.mb-3.me-2.mx-auto.border-top {
+    font-family: 'Arial';
+    /* font-style: normal; */
+    /* font-weight: 400; */
+    font-size: 15px;
+    line-height: 17px;
+    /* text-align: center; */
+}
+label.p-2.ps-0.w-100.bd-highlight {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+}
+ td,  th {
+    border-style: inset;
+    border-width: 0;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+
+}
+td{
+    font-size: 12px;
+}
+a.bd-highlight {
+    font-size: 13px;
+    text-align: left;
+}
+.abc.col-md-12.d-flex.flex-column.bd-highlight {
+    line-height: 3px;
+}
+a.bd-highlight:hover {
+    color:#6EB43F !important;
+}
+.text-truncate {
+    text-align: left;
+    max-width: 150px !important;
+}
+button.btnaction{
+    border: none;
+    background: transparent;
+}
+.truycap.modal-body {
+    text-align: left !important;
+}
+.bd-highlight.row.mb-2:hover {
+    color: #6EB43F;
+}
+

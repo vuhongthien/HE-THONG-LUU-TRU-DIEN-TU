@@ -1,0 +1,58 @@
+RequestMapping(value = { "/plugins/servlet/sms-attachment", "/plugins/servlet/sms-attachment/{id}/{fileName}" })
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp, @PathVariable(required = false) Long id,
+			@PathVariable(required = false) String fileName) throws ServletException, IOException {
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		if (id == null || fileName == null) {
+			id = Long.parseLong(req.getParameter("id"));
+			fileName = req.getParameter("fileName");
+		}
+		String type = req.getParameter("type");
+		Attachment attachment = null;
+		try {
+			attachment = attachmentManager.getAttachment(id);
+		} catch (NumberFormatException | DataAccessException | AttachmentNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String dir = "";
+			if (BeanName.KEDB.equalsIgnoreCase(type)) {
+				dir = FileUtils.KEDB_ATTACHMENT_DIRECTORY + File.separator + id;
+			} else /* if (BeanName.TICKET.equalsIgnoreCase(type)) */ {
+				dir = FileUtils.SMS_ATTACHMENTS + File.separator + attachment.getAttachObjectType() + File.separator
+						+ attachment.getAttachObjectId() + File.separator + id;
+			}
+			String attachmentPath = dir;
+			inputStream = new FileInputStream(attachmentPath);
+			// IOUtils jar used to convert Input Stream to byte array easily
+			byte[] bytes = IOUtils.toByteArray(inputStream);
+			String mineType = attachment.getMineType();
+			if (mineType == null) {
+				mineType = "application/octet-stream";
+			}
+		
+			if (StringUtils.isNotBlank(attachmentPath)) {
+				resp.setContentType(mineType + "; charset=UTF-8");
+				resp.setCharacterEncoding("UTF-8");
+				resp.setHeader("X-Frame-Options", "SAMEORIGIN");
+				if(req.getHeader("User-Agent").indexOf("IE") != -1 || req.getHeader("User-Agent").indexOf("Chrome") != -1) {
+					resp.setHeader("Content-disposition", " inline; filename=" + URLEncoder.encode(attachment.getFileName(), StandardCharsets.UTF_8.toString()).replace("+", "%20"));
+				} else {
+					resp.setHeader("Content-disposition"," inline; filename*=UTF-8''" + URLEncoder.encode(attachment.getFileName(), StandardCharsets.UTF_8.toString()).replace("+", "%20"));
+				}
+				
+				outputStream = resp.getOutputStream();
+				outputStream.write(bytes);
+			} else
+				resp.sendError(404, "File not found");
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			log.warn("download fail");
+			resp.sendError(404, e.toString());
+		} finally {
+			if (inputStream != null)
+				inputStream.close();
+			if (outputStream != null)
+				outputStream.close();
+		}
+	}

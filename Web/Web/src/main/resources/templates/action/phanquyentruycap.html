@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div th:fragment="popup1" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-body ">
+                <div class="row">
+                    <div class="abc col-md-12 d-flex flex-column bd-highlight ">
+                        <a class="bd-highlight " data-bs-target="#phanquyen"
+                           data-bs-toggle="modal" data-bs-dismiss="modal" href="#">
+                            <img src="/image/user1.png">
+                            Phân quyền truy cập
+                        </a><br>
+                        <a class="bd-highlight " data-bs-target="#share"
+                           data-bs-toggle="modal" data-bs-dismiss="modal" href="#"><img src="/image/share1.png">
+                            Chia sẻ</a><br>
+                        <a class="bd-highlight " data-bs-target="#link"
+                           data-bs-toggle="modal" data-bs-dismiss="modal" href="#"><img src="/image/link1.png">
+                            Nhận đường liên kết</a><br>
+                        <a class="bd-highlight " data-bs-target="#download"
+                           data-bs-toggle="modal" data-bs-dismiss="modal" href="#"><img src="/image/download1.png">
+                            Tải xuống</a><br>
+                        <a class="bd-highlight " data-bs-target="#add"
+                           data-bs-toggle="modal" data-bs-dismiss="modal" href="#"><img src="/image/star2.png">
+                            Thêm vào tài liệu có đánh dấu sao</a><br>
+                        <a class="bd-highlight " data-bs-target="#send"
+                           data-bs-toggle="modal" data-bs-dismiss="modal" href="#"><img src="/image/email.png">
+                            Gửi mail</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="popup2" class="modal fade" id="phanquyen" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">Phân quyền truy cập</h5>
+            </div>
+            <div class="truycap modal-body ">
+                <div class="row">
+                    <div class="col-md-6 ms-2 d-flex flex-column bd-highlight mb-2">
+                        <b >Hiển thị</b>
+                    </div>
+                    <div class="col-md-12 d-flex flex-column bd-highlight">
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="an">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="an">
+                                    Ẩn tệp tin/thư mục này với người dùng
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="hienhom">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="hienhom">
+                                    Hiển thị tệp tin/thư mục này với nhóm:
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="hienchon">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="hienchon">
+                                    Hiển thị tệp tin/thư mục này cho các người dùng được chọn
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="annhom">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="annhom">
+                                    Ẩn tệp tin/thư mục này với nhóm
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="anchon">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="anchon">
+                                    Ẩn tệp tin/thư mục này cho các người dùng được chọn
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ms-2 d-flex flex-column bd-highlight mb-2">
+                        <b class="bd-highlight">Tải xuống</b>
+                    </div>
+                    <div class="col-md-12 d-flex flex-column justify-content-end bd-highlight">
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="khongtai">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="khongtai">
+                                    Không cho phép tải tệp tin/thư mục này với người dùng
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="chotainhom">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="chotainhom">
+                                    Cho phép tải tệp tin/thư mục này với nhóm:
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="chotainguoidung">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="chotainguoidung">
+                                    Cho phép tải tệp tin/thư mục này với người dùng:
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="khongtainhom">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="khongtainhom">
+                                    Không cho phép tải tệp tin/thư mục này với nhóm:
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="khongtainguoidung">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="khongtainguoidung">
+                                    Không cho phép tải tệp tin/thư mục này với người dùng:
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ms-2 d-flex flex-column bd-highlight mb-2">
+                        <b class="bd-highlight">Chia sẻ</b>
+                    </div>
+                    <div class="col-md-12 d-flex flex-column justify-content-end bd-highlight">
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="khongsharenguoidung">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="khongsharenguoidung">
+                                    Không cho phép chia sẻ tệp tin/thư mục này với người dùng
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="sharenhom">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="sharenhom">
+                                    Cho phép chia sẻ tệp tin/thư mục này với nhóm:
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="shareuser">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="shareuser">
+                                    Cho phép chia sẻ tệp tin/thư mục này với người dùng:
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="ksharenhom">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="ksharenhom">
+                                    Không cho phép chia sẻ tệp tin/thư mục này với nhóm:
+                                </label>
+                            </div>
+                        </div>
+                        <div class="bd-highlight row mb-2">
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <input class="form-check-input" type="checkbox" value="" id="kochiase">
+                            </div>
+                            <div class="col-md-9">
+                                <label class="form-check-label " for="kochiase">
+                                    Không cho phép chia sẻ tệp tin/thư mục này với người dùng:
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-end ">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                <button type="button" class="btn btn-primary me-5">Lưu Thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
