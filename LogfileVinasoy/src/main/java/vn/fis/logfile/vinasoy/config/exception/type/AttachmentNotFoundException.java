@@ -1,4 +1,4 @@
-package vn.fis.logfile.vinasoy.exception;
+package vn.fis.logfile.vinasoy.config.exception.type;
 
 public class AttachmentNotFoundException extends Exception {
     public AttachmentNotFoundException(String message) {

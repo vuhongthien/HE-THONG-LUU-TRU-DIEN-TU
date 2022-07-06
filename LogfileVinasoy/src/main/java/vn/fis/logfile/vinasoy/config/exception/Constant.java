@@ -1,4 +1,4 @@
-package vn.fis.logfile.vinasoy.constant;
+package vn.fis.logfile.vinasoy.config.exception;
 
 public class Constant {
     public static final String ATTACHMENT_NOT_FOUND = "ATTACHMENT_NOT_FOUND";

@@ -3,6 +3,7 @@ package vn.fis.logfile.vinasoy.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -17,17 +18,17 @@ public class Attachment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long idEmployee;
+    private String idEmployee;
 
     private String idTask;
 
-    private Date attachmentDateTime;
+    private LocalDateTime attachmentDateTime;
 
-    private String fileNameOriginal; // vd: bao-cao
+    private String originalFileName; // vd: bao-cao
 
-    private String fileNameInSever;  // vd: NV01-TASK01-bao-cao
+    private String serverFileName;  // vd: NV01-TASK01-bao-cao
 
-    private String filePathInServer; //
+    private String serverFilePath; //
     private String typeOfFile;
 
 

@@ -1,25 +1,21 @@
 package vn.fis.logfile.vinasoy.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import vn.fis.logfile.vinasoy.model.Attachment;
+import vn.fis.logfile.vinasoy.model.AttachmentDTO;
 
 import java.util.List;
 
-@Service
+
 public interface I_AttachmentService {
-    List<Attachment> getAllAttachment();
-    Attachment findById(Long id);
+    List<AttachmentDTO> findAll();
+    Page<AttachmentDTO> pageFindAll(Pageable pageable);
+
+    Attachment findById(Long customerId);
 
 
-    List<Attachment> findByIdEmployee(String idEmployee);
-    List<Attachment> findByIdTask(String idEmployee);
-
-    List<Attachment> search(String keyword);
-
-
-    Attachment getByNameInFolder(String name);
-
-    List<Attachment> getAttachmentSend(List<Long> list);
-
-    //public SharedAttachment checkIsShareForUser(Long idFile, Long idUser);
+    AttachmentDTO upload(MultipartFile uploadFile, String idEmployee, String idTask, String linkSaveFile);
 }

@@ -1,16 +1,15 @@
-package vn.fis.logfile.vinasoy.controller;
+package vn.fis.logfile.vinasoy.config.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import vn.fis.logfile.vinasoy.exception.AttachmentNotFoundException;
-import vn.fis.logfile.vinasoy.exception.ErrorMessage;
+import vn.fis.logfile.vinasoy.config.exception.type.AttachmentNotFoundException;
 
 import java.time.LocalDateTime;
 
-import static vn.fis.logfile.vinasoy.constant.Constant.ATTACHMENT_NOT_FOUND;
+import static vn.fis.logfile.vinasoy.config.exception.Constant.ATTACHMENT_NOT_FOUND;
 
 
 @ControllerAdvice
