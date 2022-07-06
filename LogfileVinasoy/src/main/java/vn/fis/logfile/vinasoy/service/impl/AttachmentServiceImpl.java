@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import vn.fis.logfile.vinasoy.config.exception.type.AttachmentNotFoundException;
+import vn.fis.logfile.vinasoy.mapper.AttachmentMapper;
 import vn.fis.logfile.vinasoy.model.Attachment;
 import vn.fis.logfile.vinasoy.model.AttachmentDTO;
 import vn.fis.logfile.vinasoy.repository.AttachmentRepository;
@@ -21,11 +22,13 @@ import static vn.fis.logfile.vinasoy.utils.FileHandlerUtils.createServerFileName
 import static vn.fis.logfile.vinasoy.utils.FileHandlerUtils.regexRemoveSpecialCharacter;
 
 @Service
-@Slf4j
+//@Slf4j
 public class AttachmentServiceImpl implements I_AttachmentService {
     @Autowired
     private AttachmentRepository attachmentRepository;
 
+    @Autowired
+    private AttachmentMapper attachmentMapper;
 //    @Override
 //    public List<Attachment> getAllAttachment() {
 //        return attachmentRepository.findAll(Sort.by(Sort.Direction.DESC, "typeOfFile"));
@@ -33,17 +36,17 @@ public class AttachmentServiceImpl implements I_AttachmentService {
 
     @Override
     public List<AttachmentDTO> findAll() {
-        log.info("Query all attachment");
+//        log.info("Query all attachment");
         return attachmentRepository.findAll()
                 .stream()
-                .map(AttachmentDTO.Mapper::mapFromAttachmentEntity)
+                .map(attachmentMapper::toDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Page<AttachmentDTO> pageFindAll(Pageable pageable) {
-        log.info("Query all attachment: PageNumber: {}, PageSize: {}", pageable.getPageNumber(), pageable.getPageSize());
-        return attachmentRepository.findAll(pageable).map(AttachmentDTO.Mapper::mapFromAttachmentEntity);
+//        log.info("Query all attachment: PageNumber: {}, PageSize: {}", pageable.getPageNumber(), pageable.getPageSize());
+        return attachmentRepository.findAll(pageable).map(attachmentMapper::toDto);
     }
 
     @Override
@@ -55,7 +58,7 @@ public class AttachmentServiceImpl implements I_AttachmentService {
                 throw new RuntimeException(e);
             }
         });
-        log.info("Service: Attachment: {}", attachment);
+//        log.info("Service: Attachment: {}", attachment);
         return attachment;
     }
 
@@ -64,17 +67,11 @@ public class AttachmentServiceImpl implements I_AttachmentService {
     public AttachmentDTO upload(MultipartFile uploadFile, String idEmployee, String idTask, String linkSaveFile) {
         String serverFileName = createServerFileNameUtils(idEmployee, idTask, uploadFile.getOriginalFilename());
         String serverFilePath = linkSaveFile + "\\" + regexRemoveSpecialCharacter(serverFileName);
-        Attachment attachment = Attachment.builder()
-                .idEmployee(idEmployee)
-                .idTask(idTask)
-                .attachmentDateTime(LocalDateTime.now())
-                .originalFileName(uploadFile.getOriginalFilename())
-                .serverFileName(serverFileName)
-                .serverFilePath(serverFilePath)
-                .build();
+        Attachment attachment = new Attachment();
+        attachment.setServerFilePath("");
         attachmentRepository.save(attachment);
-        log.info("Upload Attachment: {}", attachment);
-        return AttachmentDTO.Mapper.mapFromAttachmentEntity(attachment);
+//        log.info("Upload Attachment: {}", attachment);
+        return attachmentMapper.toDto(attachment);
     }
 
 //    @Override

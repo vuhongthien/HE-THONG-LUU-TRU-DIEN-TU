@@ -16,9 +16,10 @@ import static vn.fis.logfile.vinasoy.config.exception.Constant.ATTACHMENT_NOT_FO
 public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {AttachmentNotFoundException.class})
     protected ResponseEntity<ErrorMessage> handlerAttachmentNotFoundException(AttachmentNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(ErrorMessage.builder().timestamp(LocalDateTime.now()).code(ATTACHMENT_NOT_FOUND)
-                        .message(e.getMessage()).build());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                .body(ErrorMessage.builder().timestamp(LocalDateTime.now()).code(ATTACHMENT_NOT_FOUND)
+//                        .message(e.getMessage()).build());
     }
 
 //    @ExceptionHandler(value = {MobileExistedException.class})

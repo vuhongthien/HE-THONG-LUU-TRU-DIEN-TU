@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/attachment")
-@Slf4j
+
 public class AttachmentAPIController {
     @Autowired
     I_AttachmentService attachmentService;
@@ -37,7 +37,7 @@ public class AttachmentAPIController {
 
     @GetMapping("/findAll")
     public List<AttachmentDTO> findAll() {
-        log.info("Response Find All");
+//        log.info("Response Find All");
         return attachmentService.findAll();
     }
 

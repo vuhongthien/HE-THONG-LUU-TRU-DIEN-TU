@@ -19,20 +19,55 @@ public class AttachmentDTO {
 
     private LocalDateTime attachmentDateTime;
 
-    private String fileNameOriginal;
+    private String originalFileName;
 
     private String typeOfFile;
-    public static class Mapper {
-        public static AttachmentDTO mapFromAttachmentEntity(Attachment attachment) {
-            return AttachmentDTO.builder()
-                    .id(attachment.getId())
-                    .idEmployee(attachment.getIdEmployee())
-                    .idTask(attachment.getIdTask())
-                    .attachmentDateTime(attachment.getAttachmentDateTime())
-                    .fileNameOriginal(attachment.getOriginalFileName())
-                    .typeOfFile(attachment.getTypeOfFile())
-                    .build();
-        }
+
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getIdEmployee() {
+        return idEmployee;
+    }
+
+    public void setIdEmployee(String idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+
+    public String getIdTask() {
+        return idTask;
+    }
+
+    public void setIdTask(String idTask) {
+        this.idTask = idTask;
+    }
+
+    public LocalDateTime getAttachmentDateTime() {
+        return attachmentDateTime;
+    }
+
+    public void setAttachmentDateTime(LocalDateTime attachmentDateTime) {
+        this.attachmentDateTime = attachmentDateTime;
+    }
+
+    public String getOriginalFileName() {
+        return originalFileName;
+    }
+
+    public void setOriginalFileName(String originalFileName) {
+        this.originalFileName = originalFileName;
+    }
+
+    public String getTypeOfFile() {
+        return typeOfFile;
+    }
+
+    public void setTypeOfFile(String typeOfFile) {
+        this.typeOfFile = typeOfFile;
+    }
 }
