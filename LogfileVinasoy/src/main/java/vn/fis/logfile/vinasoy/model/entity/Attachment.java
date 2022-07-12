@@ -1,4 +1,4 @@
-package vn.fis.logfile.vinasoy.model;
+package vn.fis.logfile.vinasoy.model.entity;
 
 import lombok.*;
 
@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -17,18 +16,21 @@ public class Attachment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String idEmployee;
-
-    private String idTask;
+    private String idTaskTicket;
 
     private LocalDateTime attachmentDateTime;
+
+    private LocalDateTime taskTicketCreatedAt;
 
     private String originalFileName; // vd: bao-cao
 
     private String serverFileName;  // vd: NV01-TASK01-bao-cao
 
-    private String serverFilePath; //
+    private String serverFilePath; // WF1 / ID_TICKET / ID_FILE
+
+    private String typeOfAttachment;
+
     private String typeOfFile;
 
     public Long getId() {
@@ -47,12 +49,12 @@ public class Attachment {
         this.idEmployee = idEmployee;
     }
 
-    public String getIdTask() {
-        return idTask;
+    public String getIdTaskTicket() {
+        return idTaskTicket;
     }
 
-    public void setIdTask(String idTask) {
-        this.idTask = idTask;
+    public void setIdTaskTicket(String idTaskTicket) {
+        this.idTaskTicket = idTaskTicket;
     }
 
     public LocalDateTime getAttachmentDateTime() {
@@ -61,6 +63,14 @@ public class Attachment {
 
     public void setAttachmentDateTime(LocalDateTime attachmentDateTime) {
         this.attachmentDateTime = attachmentDateTime;
+    }
+
+    public LocalDateTime getTaskTicketCreatedAt() {
+        return taskTicketCreatedAt;
+    }
+
+    public void setTaskTicketCreatedAt(LocalDateTime taskTicketCreatedAt) {
+        this.taskTicketCreatedAt = taskTicketCreatedAt;
     }
 
     public String getOriginalFileName() {
@@ -87,6 +97,15 @@ public class Attachment {
         this.serverFilePath = serverFilePath;
     }
 
+
+    public String getTypeOfAttachment() {
+        return typeOfAttachment;
+    }
+
+    public void setTypeOfAttachment(String typeOfAttachment) {
+        this.typeOfAttachment = typeOfAttachment;
+    }
+
     public String getTypeOfFile() {
         return typeOfFile;
     }
@@ -95,9 +114,9 @@ public class Attachment {
         this.typeOfFile = typeOfFile;
     }
 
-    //    custom method
+    //custom method
     public boolean checkIsFolder() {
-        if ( (this.typeOfFile).equals("folder") ) {
+        if ("folder".equals(typeOfAttachment)) {
             return true;
         }
         return false;

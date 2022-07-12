@@ -1,24 +1,17 @@
 package vn.fis.logfile.vinasoy.controller.API;
 
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import vn.fis.logfile.vinasoy.model.Attachment;
-import vn.fis.logfile.vinasoy.model.AttachmentDTO;
+import vn.fis.logfile.vinasoy.model.dto.AttachmentDTO;
 import vn.fis.logfile.vinasoy.service.I_AttachmentService;
-import vn.fis.logfile.vinasoy.service.impl.AttachmentServiceImpl;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Date;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -37,15 +30,51 @@ public class AttachmentAPIController {
 
     @GetMapping("/findAll")
     public List<AttachmentDTO> findAll() {
-//        log.info("Response Find All");
         return attachmentService.findAll();
     }
 
-    @PostMapping("/upload")
-    public AttachmentDTO upload (@RequestParam("file") MultipartFile file_post, @RequestParam("idEmployee")
-        String idEmployee, @RequestParam("idTask") String idTask, @RequestParam("linkSaveFile") String linkSaveFile){
-        return attachmentService.upload(file_post,idEmployee,idTask,linkSaveFile);
+    @GetMapping("/findById/{id}")
+    public AttachmentDTO findById(@RequestParam("id") Long id) {
+        return attachmentService.findById(id);
     }
+
+    @PostMapping(value = "/upload-close-ticket")
+    public List<AttachmentDTO> closeTicket(@RequestParam("multipartFiles") MultipartFile[] multipartFiles,
+                                           @RequestParam("commentFiles") MultipartFile[] commentFiles,
+                                           @RequestParam("idEmployee") String idEmployee,
+                                           @RequestParam("moduleCode") String moduleCode,
+                                           @RequestParam("processCode") String processCode,
+//                                           @RequestParam("ticketCreatedAt") LocalDateTime ticketCreatedAt,
+                                           @RequestParam("idTicket") String idTicket,
+                                           @RequestParam("subject") String subject
+    ) {
+        return attachmentService.closeTicket(multipartFiles, commentFiles, idEmployee, moduleCode, processCode,
+                LocalDateTime.now(), idTicket, subject);
+
+    }
+
+    @PostMapping(value = "/upload-close-task")
+    public List<AttachmentDTO> closeTask(@RequestParam("multipartFiles") MultipartFile[] multipartFiles,
+                                           @RequestParam("commentFiles") MultipartFile[] commentFiles,
+                                           @RequestParam("idEmployee") String idEmployee,
+                                           @RequestParam("siteCode") String siteCode,
+                                           @RequestParam("departmentCode") String departmentCode,
+//                                           @RequestParam("ticketCreatedAt") LocalDateTime ticketCreatedAt,
+                                           @RequestParam("boardName") String boardName,
+                                           @RequestParam("idTask") String idTask,
+                                           @RequestParam("subject") String subject
+    ) {
+        return attachmentService.closeTask(multipartFiles, commentFiles, idEmployee, siteCode, departmentCode,
+                LocalDateTime.now(),boardName, idTask, subject);
+    }
+
+    @GetMapping(path = "/createFolder")
+    public void createFolder(@RequestParam("path") String path) throws IOException {
+        Path dir = Paths.get(path); // filePathServer
+        Files.createDirectories(dir);
+    }
+
+
 
 //    @PostMapping("/upload")
 //    public Page<AttachmentDTO>  uploadFile(@RequestParam("file") MultipartFile file_post, @RequestParam("idEmployee")
@@ -80,7 +109,6 @@ public class AttachmentAPIController {
 //    }
 
 
-
 //    @PostMapping("/addUser")
 //    public AppUser addUser(@RequestParam("userId") Long userId, @RequestParam("userName") String userName, @RequestParam("password") String password) {
 //        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -93,7 +121,6 @@ public class AttachmentAPIController {
 //    public void doSth(@RequestParam("pathFolder") String pathFolder, @RequestParam("shareWho") Long shareWho) {
 //        loop_sub_folder(pathFolder, shareWho);
 //    }
-
 
 
 }

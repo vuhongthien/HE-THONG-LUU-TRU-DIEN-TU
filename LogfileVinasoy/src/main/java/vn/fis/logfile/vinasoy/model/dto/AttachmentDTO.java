@@ -1,4 +1,4 @@
-package vn.fis.logfile.vinasoy.model;
+package vn.fis.logfile.vinasoy.model.dto;
 
 import lombok.*;
 

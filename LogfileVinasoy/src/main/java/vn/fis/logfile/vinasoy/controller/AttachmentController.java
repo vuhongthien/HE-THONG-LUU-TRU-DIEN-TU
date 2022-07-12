@@ -11,7 +11,7 @@
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
 //import vn.fis.logfile.vinasoy.config.security.UserDetailsServiceImpl;
-//import vn.fis.logfile.vinasoy.model.Attachment;
+//import vn.fis.logfile.vinasoy.model.entity.Attachment;
 //import vn.fis.logfile.vinasoy.service.impl.AttachmentServiceImpl;
 //
 //import javax.activation.MimetypesFileTypeMap;
